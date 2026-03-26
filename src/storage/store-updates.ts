@@ -41,7 +41,9 @@ export async function compactToSingleUpdate(
       write(chunk) {
         const decoder = decoding.createDecoder(chunk);
         const update = decoding.readVarUint8Array(decoder);
-        mergedUpdates = mergedUpdates ? Y.mergeUpdatesV2([mergedUpdates, update]) : update;
+        mergedUpdates = mergedUpdates
+          ? Y.mergeUpdatesV2([mergedUpdates, update])
+          : update;
         const tail = decoding.readTailAsUint8Array(decoder);
         if (tail.length > 0) {
           throw new Error(

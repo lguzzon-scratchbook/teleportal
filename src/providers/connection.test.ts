@@ -1,10 +1,10 @@
-import { describe, expect, it, beforeEach, afterEach } from "bun:test";
+import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import {
   AckMessage,
   AwarenessMessage,
+  type ClientContext,
   DocMessage,
   Message,
-  type ClientContext,
   type StateVector,
 } from "teleportal";
 import { RpcMessage } from "teleportal/protocol";

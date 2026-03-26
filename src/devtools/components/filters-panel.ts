@@ -1,4 +1,4 @@
-import type { FilterState, ConnectionStateInfo, Statistics } from "../types";
+import type { ConnectionStateInfo, FilterState, Statistics } from "../types";
 import type { SettingsManager } from "../settings-manager";
 import { formatRelativeTime } from "../utils/message-utils";
 

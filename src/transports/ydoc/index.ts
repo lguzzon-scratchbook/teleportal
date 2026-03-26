@@ -1,6 +1,6 @@
 import {
-  applyAwarenessUpdate,
   Awareness,
+  applyAwarenessUpdate,
   encodeAwarenessUpdate,
 } from "y-protocols/awareness";
 import * as Y from "yjs";

@@ -14,7 +14,9 @@ interface EditorProps {
   provider: Provider<
     Transport<
       ClientContext,
-      DefaultTransportProperties & { handler?: EncryptionClient }
+      DefaultTransportProperties & {
+        handler?: EncryptionClient;
+      }
     >
   >;
   user?: {

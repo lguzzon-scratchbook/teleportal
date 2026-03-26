@@ -2,9 +2,9 @@ import { uuidv4 } from "lib0/random";
 import type { Storage } from "unstorage";
 
 import {
+  type Update,
   getStateVectorFromUpdate,
   mergeUpdates,
-  type Update,
 } from "teleportal";
 import type { Document, DocumentMetadata } from "../types";
 import { UnencryptedDocumentStorage } from "../unencrypted";

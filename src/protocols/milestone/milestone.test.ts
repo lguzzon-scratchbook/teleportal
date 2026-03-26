@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeEach } from "bun:test";
+import { beforeEach, describe, expect, it } from "bun:test";
 import { getMilestoneRpcHandlers } from "./index";
 import type { MilestoneStorage } from "teleportal/storage";
 

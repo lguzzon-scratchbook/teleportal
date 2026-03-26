@@ -8,7 +8,7 @@ import {
   UnstorageDocumentStorage,
   UnstorageEncryptedDocumentStorage,
 } from "teleportal/storage";
-import { createTokenManager, TokenPayload } from "teleportal/token";
+import { TokenPayload, createTokenManager } from "teleportal/token";
 import { tokenAuthenticatedWebsocketHandler } from "teleportal/websocket-server";
 
 import homepage from "../src/index.html";

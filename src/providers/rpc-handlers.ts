@@ -5,7 +5,8 @@ import type { Provider } from "./provider";
 /**
  * Context for client RPC handlers.
  */
-export interface ClientRpcContext extends ClientContext, Record<string, unknown> {
+export interface ClientRpcContext
+  extends ClientContext, Record<string, unknown> {
   documentId: string;
 }
 
@@ -13,7 +14,9 @@ export interface ClientRpcContext extends ClientContext, Record<string, unknown>
  * A client-side RPC handler for a specific RPC method.
  * Handles both outgoing requests and incoming responses/streams.
  */
-export interface ClientRpcHandler<Context extends ClientRpcContext = ClientRpcContext> {
+export interface ClientRpcHandler<
+  Context extends ClientRpcContext = ClientRpcContext,
+> {
   /**
    * Send an outgoing RPC request.
    * @param payload - The request payload

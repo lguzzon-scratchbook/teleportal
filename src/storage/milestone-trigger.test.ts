@@ -1,5 +1,5 @@
-import { describe, it, expect } from "bun:test";
-import type { MilestoneTrigger, DocumentMetadata } from "./types";
+import { describe, expect, it } from "bun:test";
+import type { DocumentMetadata, MilestoneTrigger } from "./types";
 
 describe("MilestoneTrigger Types", () => {
   it("should support time-based triggers", () => {

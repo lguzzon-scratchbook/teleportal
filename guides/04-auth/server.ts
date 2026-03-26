@@ -1,7 +1,7 @@
 import { serve } from "crossws/server";
 
 import { tokenAuthenticatedHTTPHandler } from "teleportal/http";
-import { checkPermissionWithTokenManager, Server } from "teleportal/server";
+import { Server, checkPermissionWithTokenManager } from "teleportal/server";
 import { YDocStorage } from "teleportal/storage";
 import { createTokenManager } from "teleportal/token";
 import { tokenAuthenticatedWebsocketHandler } from "teleportal/websocket-server";

@@ -1,9 +1,9 @@
 import { serve } from "crossws/server";
 import {
-  getStateVectorFromUpdate,
-  mergeUpdates,
   StateVector,
   Update,
+  getStateVectorFromUpdate,
+  mergeUpdates,
 } from "teleportal";
 import { getHTTPHandlers } from "teleportal/http";
 import { Server } from "teleportal/server";

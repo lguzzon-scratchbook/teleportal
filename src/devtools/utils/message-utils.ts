@@ -2,9 +2,9 @@ import { decoding } from "lib0";
 import { toBase64 } from "lib0/buffer.js";
 import {
   DocMessage,
-  SyncStep2Update,
   type Message,
   type RawReceivedMessage,
+  SyncStep2Update,
 } from "teleportal";
 import { decryptUpdate } from "teleportal/encryption-key";
 import {

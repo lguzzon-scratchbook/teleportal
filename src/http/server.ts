@@ -1,12 +1,12 @@
-import type { ServerContext, Message } from "teleportal";
+import type { Message, ServerContext } from "teleportal";
 import type { Server } from "teleportal/server";
 import {
   getHTTPEndpoint,
-  getSSEWriterEndpoint,
-  getSSEReaderEndpoint,
-  getStatusHandler,
-  getMetricsHandler,
   getHealthHandler,
+  getMetricsHandler,
+  getSSEReaderEndpoint,
+  getSSEWriterEndpoint,
+  getStatusHandler,
 } from "./handlers";
 import { TokenManager } from "teleportal/token";
 

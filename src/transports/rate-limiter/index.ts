@@ -11,7 +11,9 @@ export type LimitResolver<Context extends ServerContext> =
   | number
   | ((message: Message<Context>) => number | Promise<number>);
 
-export interface RateLimitExceededData<Context extends ServerContext = ServerContext> {
+export interface RateLimitExceededData<
+  Context extends ServerContext = ServerContext,
+> {
   ruleId: string;
   userId?: string;
   documentId?: string;
@@ -30,7 +32,9 @@ export interface RateLimitStateUpdatedData {
   trackBy: string;
 }
 
-export interface RateLimitEmitter<Context extends ServerContext = ServerContext> {
+export interface RateLimitEmitter<
+  Context extends ServerContext = ServerContext,
+> {
   call(
     event: "rate-limit-exceeded",
     data: RateLimitExceededData<Context>,
@@ -152,9 +156,7 @@ export interface RateLimitOptions<Context extends ServerContext> {
   /**
    * Called when rate limit is exceeded
    */
-  onRateLimitExceeded?: (
-    details: RateLimitExceededData<Context>,
-  ) => void;
+  onRateLimitExceeded?: (details: RateLimitExceededData<Context>) => void;
 
   /**
    * Called when message size limit is exceeded

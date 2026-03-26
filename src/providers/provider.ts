@@ -4,18 +4,18 @@ import { Awareness } from "y-protocols/awareness";
 import * as Y from "yjs";
 
 import {
+  type ClientContext,
   Message,
   Milestone,
+  type MilestoneSnapshot,
   Observable,
   RawReceivedMessage,
   RpcMessage,
-  type ClientContext,
-  type MilestoneSnapshot,
   type Transport,
 } from "teleportal";
 import {
-  getYTransportFromYDoc,
   type FanOutReader,
+  getYTransportFromYDoc,
 } from "teleportal/transports";
 import {
   type MilestoneCreateResponse,
@@ -29,8 +29,8 @@ import { Connection, ConnectionContext, ConnectionState } from "./connection";
 import { FallbackConnection } from "./fallback-connection";
 import { RpcClient, RpcOperationError } from "./rpc-client";
 import type {
-  ClientRpcHandlerRegistry,
   ClientRpcContext,
+  ClientRpcHandlerRegistry,
 } from "./rpc-handlers";
 
 /**

@@ -1,9 +1,9 @@
 import * as Y from "yjs";
 
 import {
+  type Update,
   getStateVectorFromUpdate,
   getUpdateFromDoc,
-  type Update,
 } from "teleportal";
 import { calculateDocumentSize } from "../utils";
 import { UnencryptedDocumentStorage } from "../unencrypted";

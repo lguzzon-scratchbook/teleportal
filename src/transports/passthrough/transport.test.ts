@@ -2,11 +2,11 @@ import { describe, expect, it } from "bun:test";
 
 import {
   AwarenessMessage,
-  DocMessage,
-  SyncStep2Update,
   type AwarenessUpdateMessage,
+  DocMessage,
   type Message,
   type StateVector,
+  SyncStep2Update,
   type Transport,
   type Update,
 } from "teleportal";

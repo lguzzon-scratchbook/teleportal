@@ -3,9 +3,9 @@ import { digest } from "lib0/hash/sha256";
 import { ClientContext, Observable } from "teleportal";
 import {
   type DecryptedBinary,
+  type EncryptedBinary,
   decryptUpdate as defaultDecryptUpdate,
   encryptUpdate as defaultEncryptUpdate,
-  type EncryptedBinary,
 } from "teleportal/encryption-key";
 import {
   AwarenessMessage,
@@ -28,6 +28,7 @@ import type {
 } from "teleportal/protocol/encryption";
 import {
   DecodedEncryptedUpdatePayload,
+  LamportClock,
   decodeEncryptedUpdate,
   decodeFromStateVector,
   decodeFromSyncStep2,
@@ -36,18 +37,17 @@ import {
   getDecodedSyncStep2,
   getEncryptedStateVector,
   getEncryptedSyncStep2,
-  LamportClock,
 } from "teleportal/protocol/encryption";
 import {
-  applyAwarenessUpdate,
   Awareness,
+  applyAwarenessUpdate,
   encodeAwarenessUpdate,
 } from "y-protocols/awareness.js";
 import * as Y from "yjs";
 import {
-  getSyncTransactionOrigin,
   YDocSinkHandler,
   YDocSourceHandler,
+  getSyncTransactionOrigin,
 } from "../ydoc";
 
 export class EncryptionClient

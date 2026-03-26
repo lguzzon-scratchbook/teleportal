@@ -8,15 +8,15 @@ import {
   test,
 } from "bun:test";
 import { toBase64 } from "lib0/buffer";
-import { http, HttpResponse } from "msw";
+import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
 import {
-  DocMessage,
   type ClientContext,
+  DocMessage,
   type Message,
+  RpcMessage,
   type Transport,
   decodeMessageArray,
-  RpcMessage,
 } from "teleportal";
 import { getFileClientHandlers } from "../../protocols/file";
 import { Provider } from "../provider";

@@ -8,7 +8,12 @@ interface SidebarProps {
   onClose?: () => void;
 }
 
-export function Sidebar({ currentDocumentId, onDocumentSelect, isMobile = false, onClose }: SidebarProps) {
+export function Sidebar({
+  currentDocumentId,
+  onDocumentSelect,
+  isMobile = false,
+  onClose,
+}: SidebarProps) {
   const documents = fileService.documents;
   const [, forceUpdate] = useState<number>(0);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -90,7 +95,11 @@ export function Sidebar({ currentDocumentId, onDocumentSelect, isMobile = false,
   );
 
   return (
-    <div className={`${isMobile ? 'w-80' : 'w-64'} bg-gray-50 dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 flex flex-col h-full max-w-[calc(100vw-2rem)] md:max-w-none`}>
+    <div
+      className={`${
+        isMobile ? "w-80" : "w-64"
+      } bg-gray-50 dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 flex flex-col h-full max-w-[calc(100vw-2rem)] md:max-w-none`}
+    >
       {/* Header */}
       <div className="px-4 h-20 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
         <div className="flex items-center justify-between w-full">
@@ -308,7 +317,13 @@ export function Sidebar({ currentDocumentId, onDocumentSelect, isMobile = false,
                           Updated {formatDate(doc.updatedAt)}
                         </p>
                       </div>
-                      <div className={`${isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity flex space-x-1`}>
+                      <div
+                        className={`${
+                          isMobile
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
+                        } transition-opacity flex space-x-1`}
+                      >
                         <div className="relative">
                           <button
                             onClick={(e) => {

@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import * as Y from "yjs";
 import { InMemoryPubSub } from "teleportal";
-import type { Update, ServerContext } from "teleportal";
+import type { ServerContext, Update } from "teleportal";
 import type { MilestoneTrigger } from "teleportal/storage";
 import { getMilestoneRpcHandlers } from "./index";
 import { Session } from "../../server/session";

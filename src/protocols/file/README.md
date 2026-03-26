@@ -64,13 +64,19 @@ const server = new Server({
 You can add custom permission checking for uploads and downloads:
 
 ```typescript
-import { getFileRpcHandlers, FilePermissionOptions } from "teleportal/protocols/file";
+import {
+  getFileRpcHandlers,
+  FilePermissionOptions,
+} from "teleportal/protocols/file";
 
 const permissionOptions: FilePermissionOptions = {
   // Check if upload is allowed
   async checkUploadPermission(fileId, metadata, context) {
     // context includes: server, documentId, session, userId, clientId
-    const hasWriteAccess = await checkUserAccess(context.userId, context.documentId);
+    const hasWriteAccess = await checkUserAccess(
+      context.userId,
+      context.documentId,
+    );
     if (!hasWriteAccess) {
       return { allowed: false, reason: "No write access" };
     }
@@ -79,7 +85,10 @@ const permissionOptions: FilePermissionOptions = {
 
   // Check if download is allowed
   async checkDownloadPermission(fileId, context) {
-    const hasReadAccess = await checkUserAccess(context.userId, context.documentId);
+    const hasReadAccess = await checkUserAccess(
+      context.userId,
+      context.documentId,
+    );
     if (!hasReadAccess) {
       return { allowed: false, reason: "No read access" };
     }
@@ -130,12 +139,12 @@ Initiate a file upload and stream chunks to the server.
 
 ```typescript
 type FileUploadRequest = {
-  fileId: string;        // Content-addressable ID (hash of file)
-  filename: string;      // Original filename
-  size: number;          // File size in bytes
-  mimeType: string;      // MIME type
-  lastModified: number;  // Timestamp
-  encrypted: boolean;    // Whether file is encrypted
+  fileId: string; // Content-addressable ID (hash of file)
+  filename: string; // Original filename
+  size: number; // File size in bytes
+  mimeType: string; // MIME type
+  lastModified: number; // Timestamp
+  encrypted: boolean; // Whether file is encrypted
 };
 ```
 
@@ -145,8 +154,8 @@ type FileUploadRequest = {
 type FileUploadResponse = {
   fileId: string;
   allowed: boolean;
-  reason?: string;       // Present if not allowed
-  statusCode?: number;   // 403 if denied, 500 on error
+  reason?: string; // Present if not allowed
+  statusCode?: number; // 403 if denied, 500 on error
 };
 ```
 
@@ -159,7 +168,7 @@ type FilePartStream = {
   fileId: string;
   chunkIndex: number;
   chunkData: Uint8Array;
-  merkleProof: Uint8Array[];  // Proof for chunk integrity
+  merkleProof: Uint8Array[]; // Proof for chunk integrity
   totalChunks: number;
   bytesUploaded: number;
   encrypted: boolean;
@@ -191,8 +200,8 @@ type FileDownloadResponse = {
   lastModified: number;
   encrypted: boolean;
   allowed: boolean;
-  reason?: string;       // Present if not allowed
-  statusCode?: number;   // 404 if not found
+  reason?: string; // Present if not allowed
+  statusCode?: number; // 404 if not found
 };
 ```
 
@@ -290,7 +299,12 @@ interface FileStorage {
 
 interface TemporaryUploadStorage {
   beginUpload(fileId: string, metadata: FileMetadata): Promise<void>;
-  storeChunk(fileId: string, index: number, data: Uint8Array, proof: Uint8Array[]): Promise<void>;
+  storeChunk(
+    fileId: string,
+    index: number,
+    data: Uint8Array,
+    proof: Uint8Array[],
+  ): Promise<void>;
   getUploadProgress(fileId: string): Promise<UploadProgress | null>;
   completeUpload(fileId: string): Promise<UploadResult>;
   cleanupExpiredUploads(): Promise<void>;
@@ -303,17 +317,17 @@ Server handlers receive `RpcServerContext`:
 
 ```typescript
 interface RpcServerContext {
-  server: Server;           // The Server instance
-  documentId: string;       // The namespaced document ID
-  session: Session;         // The Session instance
-  userId?: string;          // User ID (if authenticated)
-  clientId?: string;        // Client ID
+  server: Server; // The Server instance
+  documentId: string; // The namespaced document ID
+  session: Session; // The Session instance
+  userId?: string; // User ID (if authenticated)
+  clientId?: string; // Client ID
 }
 ```
 
 ## Constants
 
-- **MAX_FILE_SIZE**: 1GB (1024 * 1024 * 1024 bytes)
+- **MAX_FILE_SIZE**: 1GB (1024 _ 1024 _ 1024 bytes)
 - **Cleanup interval**: 5 minutes (expired uploads are periodically cleaned)
 
 ## Exports

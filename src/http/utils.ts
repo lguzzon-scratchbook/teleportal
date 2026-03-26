@@ -1,4 +1,4 @@
-import type { Message, MessageArray, ClientContext } from "teleportal";
+import type { ClientContext, Message, MessageArray } from "teleportal";
 import { fromMessageArrayStream } from "teleportal/transports";
 
 /**

@@ -6,14 +6,14 @@ import { importEncryptionKey } from "teleportal/encryption-key";
 import { tokenAuthenticatedHTTPHandler } from "teleportal/http";
 import { getFileRpcHandlers } from "teleportal/protocols/file";
 import { getMilestoneRpcHandlers } from "teleportal/protocols/milestone";
-import { checkPermissionWithTokenManager, Server } from "teleportal/server";
+import { Server, checkPermissionWithTokenManager } from "teleportal/server";
 import {
-  createEncryptedDriver,
   UnstorageDocumentStorage,
   UnstorageEncryptedDocumentStorage,
   UnstorageFileStorage,
   UnstorageMilestoneStorage,
   UnstorageRateLimitStorage,
+  createEncryptedDriver,
 } from "teleportal/storage";
 import { createTokenManager } from "teleportal/token";
 import { tokenAuthenticatedWebsocketHandler } from "teleportal/websocket-server";

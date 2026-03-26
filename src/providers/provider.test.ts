@@ -1,10 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import {
+  type ClientContext,
   DocMessage,
   Message,
-  RpcMessage,
-  type ClientContext,
   type MilestoneSnapshot,
+  RpcMessage,
   type StateVector,
   type Transport,
 } from "teleportal";
@@ -16,7 +16,7 @@ import {
   type MilestoneUpdateNameResponse,
 } from "../protocols/milestone";
 import { Connection, type ConnectionState } from "./connection";
-import { Provider, type DefaultTransportProperties } from "./provider";
+import { type DefaultTransportProperties, Provider } from "./provider";
 
 // Mock Connection for testing
 class MockConnection extends Connection<{
@@ -94,9 +94,10 @@ class MockConnection extends Connection<{
 }
 
 // Mock Transport for testing
-class MockTransport
-  implements Transport<ClientContext, DefaultTransportProperties>
-{
+class MockTransport implements Transport<
+  ClientContext,
+  DefaultTransportProperties
+> {
   public readable: ReadableStream<Message<ClientContext>>;
   public writable: WritableStream<Message<ClientContext>>;
   public synced: Promise<void>;

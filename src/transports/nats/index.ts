@@ -1,10 +1,10 @@
 import type { NatsConnection } from "@nats-io/transport-node";
 import {
   type BinaryMessage,
-  decodePubSubMessage,
-  encodePubSubMessage,
   type PubSub,
   type PubSubTopic,
+  decodePubSubMessage,
+  encodePubSubMessage,
 } from "teleportal";
 import { emitWideEvent } from "teleportal/server";
 

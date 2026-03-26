@@ -53,7 +53,14 @@ describe("range-reconciliation", () => {
 
     it("should convert mixed consecutive and non-consecutive messages", () => {
       const seenMessages: SeenMessageMapping = {
-        1: { 1: "msg1", 2: "msg2", 5: "msg5", 6: "msg6", 7: "msg7", 10: "msg10" },
+        1: {
+          1: "msg1",
+          2: "msg2",
+          5: "msg5",
+          6: "msg6",
+          7: "msg7",
+          10: "msg10",
+        },
       };
       const result = toRangeBased(seenMessages);
 
@@ -278,7 +285,13 @@ describe("range-reconciliation", () => {
     it("should merge new messages into empty local", () => {
       const local = {};
       const incoming = new Map([
-        [1, new Map([[1, "msg1"], [2, "msg2"]])],
+        [
+          1,
+          new Map([
+            [1, "msg1"],
+            [2, "msg2"],
+          ]),
+        ],
       ]);
 
       const result = mergeRangeBased(local, incoming);
@@ -294,7 +307,13 @@ describe("range-reconciliation", () => {
       };
       const localRange = toRangeBased(local);
       const incoming = new Map([
-        [1, new Map([[3, "msg3"], [4, "msg4"]])],
+        [
+          1,
+          new Map([
+            [3, "msg3"],
+            [4, "msg4"],
+          ]),
+        ],
       ]);
 
       const result = mergeRangeBased(localRange, incoming);
@@ -312,7 +331,13 @@ describe("range-reconciliation", () => {
       };
       const localRange = toRangeBased(local);
       const incoming = new Map([
-        [1, new Map([[3, "msg3"], [7, "msg7"]])],
+        [
+          1,
+          new Map([
+            [3, "msg3"],
+            [7, "msg7"],
+          ]),
+        ],
       ]);
 
       const result = mergeRangeBased(localRange, incoming);

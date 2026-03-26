@@ -5,7 +5,7 @@ import { noopTransport } from "../passthrough";
 import { withRateLimit } from "./index";
 import { DocMessage } from "teleportal";
 import type { Message, ServerContext, StateVector } from "teleportal";
-import type { RateLimitStorage, RateLimitState } from "../../storage/types";
+import type { RateLimitState, RateLimitStorage } from "../../storage/types";
 
 // Mock Transport that allows enqueueing messages for testing
 class MockTransport<Context extends ServerContext> {

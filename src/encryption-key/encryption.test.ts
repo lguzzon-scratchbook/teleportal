@@ -1,10 +1,10 @@
 import { describe, expect, it } from "bun:test";
 import {
   createEncryptionKey,
-  importEncryptionKey,
-  exportEncryptionKey,
-  encryptUpdate,
   decryptUpdate,
+  encryptUpdate,
+  exportEncryptionKey,
+  importEncryptionKey,
 } from "./index";
 import type { Update } from "teleportal";
 

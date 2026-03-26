@@ -1,10 +1,10 @@
 import {
   AckMessage,
-  decodeMessage,
   type PubSub,
   type PubSubTopic,
   type ServerContext,
   type Sink,
+  decodeMessage,
 } from "teleportal";
 
 /**

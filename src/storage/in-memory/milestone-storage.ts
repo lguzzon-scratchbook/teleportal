@@ -1,4 +1,4 @@
-import { MilestoneSnapshot, Milestone } from "teleportal";
+import { Milestone, MilestoneSnapshot } from "teleportal";
 import { uuidv4 } from "lib0/random";
 import type { Document, MilestoneStorage } from "../types";
 

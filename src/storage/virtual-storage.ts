@@ -1,8 +1,8 @@
 import { batch } from "./batch";
 import type {
-  DocumentStorage,
-  DocumentMetadata,
   Document,
+  DocumentMetadata,
+  DocumentStorage,
 } from "teleportal/storage";
 import type { StateVector, SyncStep2Update, Update } from "teleportal";
 

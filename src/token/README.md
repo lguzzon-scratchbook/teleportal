@@ -45,35 +45,35 @@ The token utility supports flexible document pattern matching:
 ### Exact Match
 
 ```typescript
-pattern: "document1"
+pattern: "document1";
 // Matches: "document1"
 ```
 
 ### Prefix Match
 
 ```typescript
-pattern: "user/*"
+pattern: "user/*";
 // Matches: "user/doc1", "user/doc2", "user/project/doc3"
 ```
 
 ### Wildcard Match
 
 ```typescript
-pattern: "*"
+pattern: "*";
 // Matches: any document name
 ```
 
 ### Suffix Match
 
 ```typescript
-pattern: "*.md"
+pattern: "*.md";
 // Matches: "readme.md", "document.md"
 ```
 
 ### Complex Patterns
 
 ```typescript
-pattern: "org/project/*"
+pattern: "org/project/*";
 // Matches: "org/project/doc1", "org/project/subfolder/doc2"
 ```
 
@@ -112,7 +112,12 @@ const access = new DocumentAccessBuilder()
   .denyPrivate()
   .denySecrets()
   .ownDocuments("user-456", ["read", "write", "comment", "suggest", "admin"])
-  .projectDocuments("important-project", ["read", "write", "comment", "suggest"])
+  .projectDocuments("important-project", [
+    "read",
+    "write",
+    "comment",
+    "suggest",
+  ])
   .admin("system/*")
   .build();
 ```
@@ -160,7 +165,10 @@ const access = new DocumentAccessBuilder()
 ```typescript
 // User owns all documents starting with their userId
 const userToken = await tokenManager.createUserToken("user-123", "org-456", [
-  "read", "write", "comment", "suggest"
+  "read",
+  "write",
+  "comment",
+  "suggest",
 ]);
 ```
 
@@ -174,20 +182,24 @@ const adminToken = await tokenManager.createAdminToken("admin-789", "org-456");
 ### 3. Create a Custom Token with Specific Access
 
 ```typescript
-const customToken = await tokenManager.createDocumentToken("user-101", "org-456", [
-  {
-    pattern: "shared/*",
-    permissions: ["read", "comment"]
-  },
-  {
-    pattern: "projects/my-project/*",
-    permissions: ["read", "write", "comment", "suggest"]
-  },
-  {
-    pattern: "user-101/*",
-    permissions: ["read", "write", "comment", "suggest", "admin"]
-  }
-]);
+const customToken = await tokenManager.createDocumentToken(
+  "user-101",
+  "org-456",
+  [
+    {
+      pattern: "shared/*",
+      permissions: ["read", "comment"],
+    },
+    {
+      pattern: "projects/my-project/*",
+      permissions: ["read", "write", "comment", "suggest"],
+    },
+    {
+      pattern: "user-101/*",
+      permissions: ["read", "write", "comment", "suggest", "admin"],
+    },
+  ],
+);
 ```
 
 ### 4. Verify and Check Permissions
@@ -200,19 +212,19 @@ if (result.valid && result.payload) {
   const canRead = tokenManager.hasDocumentPermission(
     result.payload,
     "user-123/document1",
-    "read"
+    "read",
   );
 
   const canWrite = tokenManager.hasDocumentPermission(
     result.payload,
     "shared/document1",
-    "write"
+    "write",
   );
 
   // Get all permissions for a document
   const permissions = tokenManager.getDocumentPermissions(
     result.payload,
-    "user-123/document1"
+    "user-123/document1",
   );
 }
 ```
@@ -263,7 +275,11 @@ const server = new Server({
       throw new Error("documentId is required for doc messages");
     }
     const requiredPermission = message.type === "awareness" ? "read" : "write";
-    return tokenManager.hasDocumentPermission(payload, documentId, requiredPermission);
+    return tokenManager.hasDocumentPermission(
+      payload,
+      documentId,
+      requiredPermission,
+    );
   },
 });
 
@@ -271,8 +287,9 @@ const handlers = getWebsocketHandlers({
   onUpgrade: async (request) => {
     // Extract token from request
     const url = new URL(request.url);
-    const token = url.searchParams.get("token") ||
-                 request.headers.get("authorization")?.replace("Bearer ", "");
+    const token =
+      url.searchParams.get("token") ||
+      request.headers.get("authorization")?.replace("Bearer ", "");
 
     if (!token) {
       throw new Response("No token provided", { status: 401 });

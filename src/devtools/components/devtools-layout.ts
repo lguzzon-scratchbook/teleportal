@@ -2,9 +2,9 @@ import { MessageList } from "./message-list";
 import { MessageInspector } from "./message-inspector";
 import { FiltersPanel } from "./filters-panel";
 import type {
+  ConnectionStateInfo,
   DevtoolsMessage,
   Statistics,
-  ConnectionStateInfo,
 } from "../types";
 import type { SettingsManager } from "../settings-manager";
 import type { FilterManager } from "../filter-manager";

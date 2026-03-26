@@ -394,7 +394,9 @@ describe("withTransaction", () => {
           // Verify we have a different lockId than transaction A
           expect(transactionBLockId).not.toBe(transactionALockId);
           // Wait longer than transaction A's remaining execution time to ensure B is still running when A finishes
-          await new Promise((resolve) => setTimeout(resolve, executionTime + 50));
+          await new Promise((resolve) =>
+            setTimeout(resolve, executionTime + 50),
+          );
           return "transaction-b";
         },
         { ttl: 1000, baseDelay: 10 },

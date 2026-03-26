@@ -1,8 +1,8 @@
 import {
-  RpcServerContext,
-  RpcHandlerRegistry,
-  RpcServerRequestHandler,
   RpcError,
+  RpcHandlerRegistry,
+  RpcServerContext,
+  RpcServerRequestHandler,
 } from "teleportal/protocol";
 import type { MilestoneStorage, MilestoneTrigger } from "teleportal/storage";
 import { emitWideEvent } from "../../server/logger";
@@ -10,12 +10,12 @@ import type { Server } from "../../server/server";
 import type { Session } from "../../server/session";
 import type { ServerContext } from "teleportal";
 import {
-  MilestoneListRequest,
-  MilestoneGetRequest,
   MilestoneCreateRequest,
-  MilestoneUpdateNameRequest,
   MilestoneDeleteRequest,
+  MilestoneGetRequest,
+  MilestoneListRequest,
   MilestoneRestoreRequest,
+  MilestoneUpdateNameRequest,
 } from "./methods";
 
 type Timer = ReturnType<typeof setTimeout>;

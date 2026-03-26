@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Editor } from "./editor";
 import { Document, fileService } from "../services/fileService";
 import { useProvider } from "../utils/providers";

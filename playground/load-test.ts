@@ -1,4 +1,4 @@
-import { createTokenManager, DocumentAccessBuilder } from "teleportal/token";
+import { DocumentAccessBuilder, createTokenManager } from "teleportal/token";
 import { withPassthrough } from "teleportal/transports";
 import { Provider, websocket } from "teleportal/providers";
 

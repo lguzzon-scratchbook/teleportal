@@ -1,7 +1,7 @@
-import { describe, expect, it, mock, beforeEach } from "bun:test";
+import { beforeEach, describe, expect, it, mock } from "bun:test";
 import { RateLimitedTransport } from "./index";
-import type { RateLimitStorage, RateLimitState } from "../../storage/types";
-import type { Message, ClientContext } from "teleportal";
+import type { RateLimitState, RateLimitStorage } from "../../storage/types";
+import type { ClientContext, Message } from "teleportal";
 
 // Mock Transport
 const createMockTransport = () => {
@@ -101,7 +101,9 @@ describe("RateLimitedTransport", () => {
     await writer.write(msg);
 
     // Check storage - key now includes rule ID
-    const state = await mockStorage.getState("rate-limit:user-limit:user:user1");
+    const state = await mockStorage.getState(
+      "rate-limit:user-limit:user:user1",
+    );
     expect(state).not.toBeNull();
     // Started with 2, consumed 1 -> 1 left
     expect(state?.tokens).toBe(1);
@@ -127,18 +129,24 @@ describe("RateLimitedTransport", () => {
     await writer.write({ type: "ping", context: { userId: "user1" } } as any);
 
     // Check User 1 state
-    const state1 = await mockStorage.getState("rate-limit:user-limit:user:user1");
+    const state1 = await mockStorage.getState(
+      "rate-limit:user-limit:user:user1",
+    );
     expect(state1?.tokens).toBe(0);
 
     // User 2 should not have state yet
-    const state2 = await mockStorage.getState("rate-limit:user-limit:user:user2");
+    const state2 = await mockStorage.getState(
+      "rate-limit:user-limit:user:user2",
+    );
     expect(state2).toBeNull();
 
     // If we write for User 2, it should work (and create state)
     // Note: We can't use the same writer if it crashed, but here we haven't crashed it yet.
     await writer.write({ type: "ping", context: { userId: "user2" } } as any);
 
-    const state2After = await mockStorage.getState("rate-limit:user-limit:user:user2");
+    const state2After = await mockStorage.getState(
+      "rate-limit:user-limit:user:user2",
+    );
     expect(state2After?.tokens).toBe(0);
   });
 

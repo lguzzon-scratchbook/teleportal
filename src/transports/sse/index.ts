@@ -2,12 +2,12 @@ import { fromBase64, toBase64 } from "lib0/buffer";
 import {
   BinaryMessage,
   ClientContext,
-  encodePingMessage,
-  isBinaryMessage,
-  isPingMessage,
   Message,
   Sink,
   Source,
+  encodePingMessage,
+  isBinaryMessage,
+  isPingMessage,
 } from "teleportal";
 import { getMessageReader } from "../utils";
 

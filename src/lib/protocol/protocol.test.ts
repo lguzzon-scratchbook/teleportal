@@ -7,8 +7,11 @@ import {
   AckMessage,
   AwarenessMessage,
   AwarenessUpdateMessage,
-  decodeMessage,
   DocMessage,
+  StateVector,
+  SyncStep2Update,
+  Update,
+  decodeMessage,
   encodePingMessage,
   encodePongMessage,
   getEmptyStateVector,
@@ -17,9 +20,6 @@ import {
   isEmptyUpdate,
   isPingMessage,
   isPongMessage,
-  StateVector,
-  SyncStep2Update,
-  Update,
 } from ".";
 import type { FilePartStream } from "../../protocols/file/methods";
 

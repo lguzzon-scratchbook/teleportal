@@ -1,4 +1,4 @@
-import { Message, RawReceivedMessage, type ClientContext } from "teleportal";
+import { type ClientContext, Message, RawReceivedMessage } from "teleportal";
 import { getHTTPSink, getSSESource } from "teleportal/transports";
 import { Connection, ConnectionOptions } from "../connection";
 

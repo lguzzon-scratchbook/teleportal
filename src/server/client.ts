@@ -1,4 +1,4 @@
-import type { ServerContext, Message } from "teleportal";
+import type { Message, ServerContext } from "teleportal";
 import { emitWideEvent } from "./logger";
 import { Observable } from "../lib/utils";
 

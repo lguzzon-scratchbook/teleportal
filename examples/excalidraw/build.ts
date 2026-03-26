@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { build, type BuildConfig } from "bun";
+import { type BuildConfig, build } from "bun";
 import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
 import { rm } from "fs/promises";

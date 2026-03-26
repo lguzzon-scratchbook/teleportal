@@ -16,9 +16,9 @@ import {
   encodeEncryptedUpdateMessages,
   encodeToStateVector,
   encodeToSyncStep2,
-  getEmptyEncryptedUpdate,
   getEmptyEncryptedStateVector,
   getEmptyEncryptedSyncStep2,
+  getEmptyEncryptedUpdate,
 } from "./encoding";
 import type { ClientId, Counter, LamportClockValue } from "./lamport-clock";
 

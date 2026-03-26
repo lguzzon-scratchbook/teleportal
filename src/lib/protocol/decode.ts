@@ -5,8 +5,8 @@ import {
   AwarenessMessage,
   type BinaryMessage,
   DocMessage,
-  RpcMessage,
   type RawReceivedMessage,
+  RpcMessage,
 } from "./message-types";
 import type {
   AuthMessage,

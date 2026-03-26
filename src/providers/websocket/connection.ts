@@ -1,9 +1,9 @@
 import {
+  type Message,
   decodeMessage,
   encodePingMessage,
   isBinaryMessage,
   isPongMessage,
-  type Message,
 } from "teleportal";
 import { Connection, ConnectionOptions } from "../connection";
 

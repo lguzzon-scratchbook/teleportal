@@ -1,18 +1,18 @@
 import { emitWideEvent } from "./logger";
 import {
-  decodeMessage,
   DocMessage,
   type Message,
   type PubSub,
   type ServerContext,
   type SyncStep2Update,
   type Update,
+  decodeMessage,
 } from "teleportal";
 import type { MetricsCollector } from "teleportal/monitoring";
 import {
-  RpcMessage,
   type RpcError,
   type RpcHandlerRegistry,
+  RpcMessage,
   type RpcServerContext,
   type RpcSuccess,
 } from "teleportal/protocol";

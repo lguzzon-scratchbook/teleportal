@@ -1,7 +1,7 @@
-import { describe, expect, it, mock, beforeEach } from "bun:test";
+import { beforeEach, describe, expect, it, mock } from "bun:test";
 import { RateLimitedTransport } from "./index";
-import type { RateLimitStorage, RateLimitState } from "../../storage/types";
-import type { Message, ClientContext } from "teleportal";
+import type { RateLimitState, RateLimitStorage } from "../../storage/types";
+import type { ClientContext, Message } from "teleportal";
 
 // Mock Transport
 const createMockTransport = () => {
@@ -78,7 +78,9 @@ describe("RateLimitedTransport - Dynamic Limits", () => {
     }
 
     // Check storage for VIP - key includes rule ID
-    const stateVip = await mockStorage.getState("rate-limit:user-limit:user:vip");
+    const stateVip = await mockStorage.getState(
+      "rate-limit:user-limit:user:vip",
+    );
     expect(stateVip).not.toBeNull();
     expect(stateVip?.maxMessages).toBe(10);
     // consumed 5, so tokens should be 5 (with possible tiny refill due to timing)
@@ -86,7 +88,9 @@ describe("RateLimitedTransport - Dynamic Limits", () => {
     expect(stateVip?.tokens).toBeLessThan(5.1);
 
     // Check storage for Normal
-    const stateNormal = await mockStorage.getState("rate-limit:user-limit:user:normal");
+    const stateNormal = await mockStorage.getState(
+      "rate-limit:user-limit:user:normal",
+    );
     expect(stateNormal?.maxMessages).toBe(2);
     // Due to token bucket refill, tokens might be slightly > 0, but should be < 1
     expect(stateNormal?.tokens).toBeLessThan(1); // 2 - 2 = 0 (with possible tiny refill)
@@ -124,12 +128,16 @@ describe("RateLimitedTransport - Dynamic Limits", () => {
 
     await writer.write({ type: "ping", context: { userId: "slow" } } as any);
 
-    const stateSlow = await mockStorage.getState("rate-limit:user-limit:user:slow");
+    const stateSlow = await mockStorage.getState(
+      "rate-limit:user-limit:user:slow",
+    );
     expect(stateSlow?.windowMs).toBe(10000);
 
     await writer.write({ type: "ping", context: { userId: "fast" } } as any);
 
-    const stateFast = await mockStorage.getState("rate-limit:user-limit:user:fast");
+    const stateFast = await mockStorage.getState(
+      "rate-limit:user-limit:user:fast",
+    );
     expect(stateFast?.windowMs).toBe(1000);
   });
 });

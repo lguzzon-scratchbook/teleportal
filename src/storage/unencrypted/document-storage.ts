@@ -1,18 +1,14 @@
 import * as Y from "yjs";
 
 import {
-  getEmptyStateVector,
-  getEmptyUpdate,
   type StateVector,
   type SyncStep2Update,
   type Update,
+  getEmptyStateVector,
+  getEmptyUpdate,
 } from "teleportal";
 
-import type {
-  Document,
-  DocumentMetadata,
-  DocumentStorage,
-} from "../types";
+import type { Document, DocumentMetadata, DocumentStorage } from "../types";
 
 function defaultMetadata(now: number, encrypted: boolean): DocumentMetadata {
   return {
@@ -29,7 +25,7 @@ function defaultMetadata(now: number, encrypted: boolean): DocumentMetadata {
  */
 export abstract class UnencryptedDocumentStorage implements DocumentStorage {
   readonly type = "document-storage" as const;
-  storageType: "unencrypted" = "unencrypted";
+  storageType = "unencrypted" as const;
 
   abstract handleUpdate(
     documentId: Document["id"],

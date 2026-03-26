@@ -161,7 +161,9 @@ class FileService extends Observable<{
       ? await exportEncryptionKey(document.encryptedKey)
       : undefined;
 
-    return `${window.location.origin}?name=${encodeURIComponent(document.name)}&id=${encodeURIComponent(id)}${key ? `&token=${encodeURIComponent(key)}` : ""}`;
+    return `${window.location.origin}?name=${encodeURIComponent(document.name)}&id=${encodeURIComponent(id)}${
+      key ? `&token=${encodeURIComponent(key)}` : ""
+    }`;
   }
 
   async loadDocumentFromUrl(url: string): Promise<Document | null> {

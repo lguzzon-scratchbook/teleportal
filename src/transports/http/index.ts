@@ -1,9 +1,9 @@
 import {
   type ClientContext,
-  encodeMessageArray,
   type Message,
   type Sink,
   type Source,
+  encodeMessageArray,
 } from "teleportal";
 import {
   BatchingOptions,

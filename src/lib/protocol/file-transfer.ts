@@ -2,8 +2,8 @@ import { toBase64 } from "lib0/buffer";
 import { uuidv4 } from "lib0/random";
 import {
   CHUNK_SIZE,
-  createMerkleTreeTransformStream,
   ENCRYPTED_CHUNK_SIZE,
+  createMerkleTreeTransformStream,
 } from "teleportal/merkle-tree";
 import { AckMessage, type Message } from "./message-types";
 import { decryptUpdate, encryptUpdate } from "teleportal/encryption-key";
@@ -162,7 +162,10 @@ export namespace FileTransferProtocol {
         // Handle RPC stream messages (file parts)
         if (rpcMessage.requestType === "stream") {
           if (rpcMessage.payload.type === "success") {
-            await this.handleFilePart(rpcMessage.payload.payload as FilePartStream, rpcMessage.context);
+            await this.handleFilePart(
+              rpcMessage.payload.payload as FilePartStream,
+              rpcMessage.context,
+            );
             return true;
           }
         }
@@ -374,7 +377,10 @@ export namespace FileTransferProtocol {
       const rpcMessage = message as RpcMessage<Context>;
 
       // Handle RPC stream messages (file parts)
-      if (rpcMessage.requestType === "stream" && rpcMessage.payload.type === "success") {
+      if (
+        rpcMessage.requestType === "stream" &&
+        rpcMessage.payload.type === "success"
+      ) {
         await this.onChunkReceived(
           rpcMessage.payload.payload as FilePartStream,
           message.id,

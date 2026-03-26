@@ -11,11 +11,11 @@ import { ws } from "msw";
 import { setupServer } from "msw/node";
 import {
   ClientContext,
-  decodeMessage,
-  isBinaryMessage,
   Message,
   RpcMessage,
   ServerContext,
+  decodeMessage,
+  isBinaryMessage,
 } from "teleportal";
 import { CHUNK_SIZE } from "teleportal/merkle-tree";
 import type { RpcHandlerRegistry, RpcServerContext } from "teleportal/protocol";

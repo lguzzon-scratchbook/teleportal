@@ -1,9 +1,9 @@
 import { getPinoSink } from "@logtape/adaptor-pino";
 import {
+  type Sink,
   configure,
   getConsoleSink,
   getLogger,
-  type Sink,
 } from "@logtape/logtape";
 import { pino } from "pino";
 import { prettyFormatter } from "@logtape/pretty";

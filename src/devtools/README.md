@@ -177,7 +177,10 @@ document.body.appendChild(devtoolsElement);
 
 ```tsx
 import { useState, useEffect, useRef } from "react";
-import { createTeleportalDevtools, getDevtoolsState } from "teleportal/devtools";
+import {
+  createTeleportalDevtools,
+  getDevtoolsState,
+} from "teleportal/devtools";
 
 export function TeleportalDevtoolsPanel() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -195,7 +198,8 @@ export function TeleportalDevtoolsPanel() {
     // Cleanup on unmount
     return () => {
       if (devtoolsRef.current) {
-        const cleanup = (devtoolsRef.current as any).__teleportalDevtoolsCleanup;
+        const cleanup = (devtoolsRef.current as any)
+          .__teleportalDevtoolsCleanup;
         if (cleanup) {
           cleanup();
         }
@@ -218,7 +222,10 @@ export function TeleportalDevtoolsPanel() {
 You can provide custom state managers for advanced use cases:
 
 ```typescript
-import { createTeleportalDevtools, getDevtoolsState } from "teleportal/devtools";
+import {
+  createTeleportalDevtools,
+  getDevtoolsState,
+} from "teleportal/devtools";
 
 // Get default state
 const state = getDevtoolsState();

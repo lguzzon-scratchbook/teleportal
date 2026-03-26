@@ -45,7 +45,10 @@ The `Provider` automatically handles milestone RPC requests via its `RpcClient`.
 ```typescript
 import { Provider } from "teleportal/providers";
 
-const provider = await Provider.create({ url: "wss://...", document: "my-doc" });
+const provider = await Provider.create({
+  url: "wss://...",
+  document: "my-doc",
+});
 
 // List milestones
 const milestones = await provider.listMilestones();
@@ -312,6 +315,7 @@ The `session.storage` property provides access to the `DocumentStorage` for the 
 ## Method Names
 
 The RPC methods use the following string names:
+
 - `"milestoneList"` - list milestones for a document
 - `"milestoneGet"` - get a milestone snapshot
 - `"milestoneCreate"` - create a new milestone

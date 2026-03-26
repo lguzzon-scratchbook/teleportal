@@ -1,4 +1,4 @@
-import type { RpcSuccess, RpcError } from "teleportal/protocol";
+import type { RpcError, RpcSuccess } from "teleportal/protocol";
 import { RpcMessage } from "teleportal/protocol";
 import type { Connection } from "./connection";
 

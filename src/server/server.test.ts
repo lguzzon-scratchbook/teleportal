@@ -1,16 +1,16 @@
-import { describe, expect, it, beforeEach, afterEach } from "bun:test";
+import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 
 import { Server } from "./server";
 import { checkPermissionWithTokenManager } from "./check-permission";
 import { Client } from "./client";
-import { AckMessage, InMemoryPubSub, DocMessage } from "teleportal";
+import { AckMessage, DocMessage, InMemoryPubSub } from "teleportal";
 import { createTokenManager } from "teleportal/token";
 import type {
-  ServerContext,
   Message,
-  Transport,
+  ServerContext,
   StateVector,
   SyncStep2Update,
+  Transport,
   Update,
 } from "teleportal";
 import type {
@@ -122,9 +122,9 @@ class MockDocumentStorage implements DocumentStorage {
 }
 
 // Mock Transport for testing
-class MockTransport<Context extends ServerContext>
-  implements Transport<Context>
-{
+class MockTransport<
+  Context extends ServerContext,
+> implements Transport<Context> {
   public readable: ReadableStream<Message<Context>>;
   public writable: WritableStream<Message<Context>>;
   public mockDestroy = false;

@@ -4,8 +4,8 @@ import { emitWideEvent } from "teleportal/server";
 import {
   type BinaryMessage,
   type BinaryTransport,
-  isBinaryMessage,
   type ServerContext,
+  isBinaryMessage,
 } from "teleportal";
 import type { Client, Server } from "teleportal/server";
 import type { TokenManager } from "teleportal/token";

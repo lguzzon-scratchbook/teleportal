@@ -1,8 +1,8 @@
 import type { DevtoolsMessage } from "../types";
 import {
   formatMessagePayload,
-  getMessageTypeLabel,
   getMessageTypeColor,
+  getMessageTypeLabel,
 } from "../utils/message-utils";
 
 export class MessageInspector {

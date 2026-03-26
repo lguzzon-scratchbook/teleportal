@@ -142,12 +142,18 @@ type ServerOptions<Context extends ServerContext> = {
    * If provided, all transports will be rate-limited before processing messages.
    */
   rateLimitConfig?: {
-    maxMessages?: number | ((message: Message<Context>) => number | Promise<number>); // default: 100
-    windowMs?: number | ((message: Message<Context>) => number | Promise<number>); // default: 1000ms
+    maxMessages?:
+      | number
+      | ((message: Message<Context>) => number | Promise<number>); // default: 100
+    windowMs?:
+      | number
+      | ((message: Message<Context>) => number | Promise<number>); // default: 1000ms
     maxMessageSize?: number; // default: 10MB
     rateLimitStorage?: RateLimitStorage; // Optional persistent storage (Redis, etc.)
     trackBy?: "user" | "document" | "user-document" | "transport"; // default: "user"
-    shouldSkipRateLimit?: (message: Message<Context>) => Promise<boolean> | boolean;
+    shouldSkipRateLimit?: (
+      message: Message<Context>,
+    ) => Promise<boolean> | boolean;
     onRateLimitExceeded?: (details: {
       ruleId: string;
       userId?: string;

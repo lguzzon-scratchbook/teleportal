@@ -7,8 +7,8 @@ import {
   type ServerContext,
 } from "teleportal";
 import {
-  buildMerkleTree,
   CHUNK_SIZE,
+  buildMerkleTree,
   generateMerkleProof,
 } from "teleportal/merkle-tree";
 import { InMemoryFileStorage } from "../../storage/in-memory/file-storage";

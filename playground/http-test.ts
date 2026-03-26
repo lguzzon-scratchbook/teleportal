@@ -2,7 +2,7 @@
 import { EventSource } from "eventsource";
 import { DocMessage, Message, Observable, StateVector } from "teleportal";
 import { decodeHTTPRequest } from "teleportal/http";
-import { createTokenManager, DocumentAccessBuilder } from "teleportal/token";
+import { DocumentAccessBuilder, createTokenManager } from "teleportal/token";
 import {
   compose,
   getHTTPSink,

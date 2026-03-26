@@ -1,9 +1,9 @@
-import { toBase64, fromBase64 } from "lib0/buffer";
+import { fromBase64, toBase64 } from "lib0/buffer";
 import { uuidv4 } from "lib0/random";
 import {
   CHUNK_SIZE,
-  createMerkleTreeTransformStream,
   ENCRYPTED_CHUNK_SIZE,
+  createMerkleTreeTransformStream,
   verifyMerkleProof,
 } from "teleportal/merkle-tree";
 import { AckMessage, type Message } from "teleportal/protocol";

@@ -1,8 +1,8 @@
 import type { DevtoolsMessage } from "../types";
 import {
-  getMessageTypeLabel,
-  getMessageTypeColor,
   formatTimestamp,
+  getMessageTypeColor,
+  getMessageTypeLabel,
 } from "../utils/message-utils";
 
 export function createMessageItem(

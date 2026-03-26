@@ -2,9 +2,9 @@ import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import {
   AckMessage,
   AwarenessMessage,
+  type AwarenessUpdateMessage,
   DocMessage,
   InMemoryPubSub,
-  type AwarenessUpdateMessage,
   type PubSubTopic,
   type ServerContext,
   type Sink,

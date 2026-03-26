@@ -47,7 +47,9 @@ Creates WebSocket handlers using the `crossws` library. This is a low-level API 
 **Signature:**
 
 ```typescript
-function getWebsocketHandlers<T extends Pick<crossws.PeerContext, "room" | "userId">>({
+function getWebsocketHandlers<
+  T extends Pick<crossws.PeerContext, "room" | "userId">,
+>({
   onUpgrade,
   onConnect,
   onDisconnect,
@@ -75,7 +77,7 @@ function getWebsocketHandlers<T extends Pick<crossws.PeerContext, "room" | "user
   }) => void | Promise<void>;
 }): {
   hooks: crossws.Hooks;
-}
+};
 ```
 
 **Parameters:**
@@ -149,7 +151,7 @@ function tokenAuthenticatedWebsocketHandler<T extends ServerContext>({
   server: Server<T>;
   tokenManager: TokenManager;
   hooks?: Partial<Parameters<typeof getWebsocketHandlers>[0]>;
-}): ReturnType<typeof getWebsocketHandlers>
+}): ReturnType<typeof getWebsocketHandlers>;
 ```
 
 **Parameters:**

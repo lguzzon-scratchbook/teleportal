@@ -1,19 +1,20 @@
 import {
-  Source,
+  type BinaryMessage,
+  BinaryTransport,
+  ClientContext,
+  type Message,
+  MessageArray,
+  RawReceivedMessage,
   Sink,
+  Source,
   Transport,
   decodeMessage,
-  type BinaryMessage,
-  type Message,
-  BinaryTransport,
-  encodePongMessage,
-  isPingMessage,
-  MessageArray,
   decodeMessageArray,
   encodeMessageArray,
-  ClientContext,
-  RawReceivedMessage,
+  encodePongMessage,
+  isPingMessage,
 } from "teleportal";
+import type { ContextResolver } from "./types";
 
 export type FanOutReader<T> = {
   /**
@@ -240,7 +241,7 @@ export function sync<Context extends Record<string, unknown>>(
  * Reads an untrusted {@link BinaryMessage} and decodes it into a {@link Message}.
  */
 export const getMessageReader = <Context extends Record<string, unknown>>(
-  context: Context | ((message: RawReceivedMessage) => Context),
+  context: Context | ContextResolver<Context>,
 ) =>
   new TransformStream<BinaryMessage, Message<Context>>({
     transform(chunk, controller) {

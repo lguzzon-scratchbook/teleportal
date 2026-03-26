@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import {
-  websocket,
-  Provider,
-  DefaultTransportProperties,
   Connection,
+  DefaultTransportProperties,
   FallbackConnection,
+  Provider,
+  websocket,
 } from "teleportal/providers";
-import { createTokenManager, DocumentAccessBuilder } from "teleportal/token";
+import { DocumentAccessBuilder, createTokenManager } from "teleportal/token";
 import { getFileClientHandlers } from "teleportal/protocols/file";
 
 import { getEncryptedTransport } from "./encrypted";
@@ -25,7 +25,9 @@ class ProviderManager {
   private provider: Provider<
     Transport<
       ClientContext,
-      DefaultTransportProperties & { handler?: EncryptionClient }
+      DefaultTransportProperties & {
+        handler?: EncryptionClient;
+      }
     >
   > | null = null;
   private websocketConnection: Promise<Connection> | null = null;
@@ -132,7 +134,9 @@ export function useProvider(
   provider: Provider<
     Transport<
       ClientContext,
-      DefaultTransportProperties & { handler?: EncryptionClient }
+      DefaultTransportProperties & {
+        handler?: EncryptionClient;
+      }
     >
   > | null;
 } {
@@ -160,7 +164,9 @@ export function useProvider(
     provider: provider as Provider<
       Transport<
         ClientContext,
-        DefaultTransportProperties & { handler?: EncryptionClient }
+        DefaultTransportProperties & {
+          handler?: EncryptionClient;
+        }
       >
     > | null,
   };

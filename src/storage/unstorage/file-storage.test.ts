@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "bun:test";
 import { toBase64 } from "lib0/buffer";
 import type { StateVector, SyncStep2Update, Update } from "teleportal";
-import { buildMerkleTree, CHUNK_SIZE } from "teleportal/merkle-tree";
+import { CHUNK_SIZE, buildMerkleTree } from "teleportal/merkle-tree";
 import { createStorage } from "unstorage";
 import type { Document, DocumentMetadata, DocumentStorage } from "../types";
 import { UnstorageFileStorage } from "./file-storage";
@@ -306,7 +306,7 @@ describe("UnstorageFileStorage", () => {
 function createMockDocumentStorage(): DocumentStorage {
   class MockDocumentStorage implements DocumentStorage {
     readonly type = "document-storage" as const;
-    storageType: "unencrypted" = "unencrypted";
+    storageType = "unencrypted" as const;
     metadata: Map<string, DocumentMetadata> = new Map();
 
     async handleSyncStep1(

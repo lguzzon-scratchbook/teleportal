@@ -2,7 +2,7 @@ import * as random from "lib0/random";
 import { useEffect, useState } from "react";
 
 import { Provider } from "teleportal/providers";
-import { createTokenManager, DocumentAccessBuilder } from "teleportal/token";
+import { DocumentAccessBuilder, createTokenManager } from "teleportal/token";
 import { Whiteboard } from "./whiteboard";
 
 export const usercolors = [

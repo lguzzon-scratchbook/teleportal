@@ -1,11 +1,11 @@
 import {
-  describe,
-  test,
-  expect,
-  beforeEach,
+  afterAll,
   afterEach,
   beforeAll,
-  afterAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
 } from "bun:test";
 import { HttpConnection } from "./connection";
 import { Connection, ConnectionState } from "../connection";

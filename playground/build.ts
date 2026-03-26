@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { build, type BuildConfig } from "bun";
+import { type BuildConfig, build } from "bun";
 import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
 import { rm } from "fs/promises";
@@ -144,7 +144,9 @@ const entrypoints = [
   .map((a) => path.join(import.meta.dir, a))
   .filter((dir) => !dir.includes("node_modules"));
 console.info(
-  `📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process\n`,
+  `📄 Found ${entrypoints.length} HTML ${
+    entrypoints.length === 1 ? "file" : "files"
+  } to process\n`,
 );
 
 // Build all the HTML files

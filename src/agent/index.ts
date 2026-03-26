@@ -1,9 +1,9 @@
 import { Message, Observable, ServerContext } from "teleportal";
-import { emitWideEvent, Server } from "teleportal/server";
+import { Server, emitWideEvent } from "teleportal/server";
 import {
-  getYTransportFromYDoc,
   YDocSinkHandler,
   YDocSourceHandler,
+  getYTransportFromYDoc,
 } from "teleportal/transports";
 
 export class Agent {

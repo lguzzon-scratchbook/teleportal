@@ -1,8 +1,8 @@
-import { describe, it, expect, beforeEach, vi } from "bun:test";
+import { beforeEach, describe, expect, it, vi } from "bun:test";
 import type {
-  DocumentStorage,
-  DocumentMetadata,
   Document,
+  DocumentMetadata,
+  DocumentStorage,
 } from "teleportal/storage";
 import type { Update } from "teleportal";
 import { VirtualStorage } from "./virtual-storage";

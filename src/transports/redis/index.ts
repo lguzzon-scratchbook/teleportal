@@ -1,16 +1,17 @@
 import { Redis, RedisOptions } from "ioredis";
 import {
   BinaryMessage,
-  decodePubSubMessage,
-  encodePubSubMessage,
   Message,
   PubSub,
   PubSubTopic,
   RawReceivedMessage,
   ServerContext,
   Transport,
+  decodePubSubMessage,
+  encodePubSubMessage,
 } from "teleportal";
 import { emitWideEvent } from "teleportal/server";
+import type { ServerContextResolver } from "../types";
 import { getPubSubTransport } from "../pubSub";
 
 export { RedisRateLimitStorage } from "./rate-limit-storage";
@@ -111,7 +112,7 @@ export function getRedisTransport<Context extends ServerContext>({
   sourceId,
   topicResolver = (m) => `document/${m.document}`,
 }: {
-  getContext: Context | ((message: RawReceivedMessage) => Context);
+  getContext: Context | ServerContextResolver<Context>;
   redisOptions: {
     path: string;
     options?: RedisOptions;

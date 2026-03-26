@@ -1,7 +1,7 @@
-import { describe, expect, it, beforeEach, afterEach } from "bun:test";
+import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import { Client } from "./client";
 import { DocMessage } from "teleportal";
-import type { ServerContext, Message, StateVector } from "teleportal";
+import type { Message, ServerContext, StateVector } from "teleportal";
 
 describe("Client", () => {
   let client: Client<ServerContext>;

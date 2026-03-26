@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { Provider } from "teleportal/providers";
 import type { Milestone } from "teleportal";
 

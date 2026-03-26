@@ -345,13 +345,18 @@ export interface DocumentMetadata {
 }
 
 /**
+ * Function type for generating milestone names.
+ */
+export type MilestoneNameGenerator = (milestone: Milestone) => string;
+
+/**
  * Trigger configuration for automatic milestone creation.
  */
 export type MilestoneTrigger = {
   id: string;
   documentId?: string; // If undefined, applies to all documents
   enabled: boolean;
-  autoName?: string | ((milestone: Milestone) => string); // Auto-generate name
+  autoName?: string | MilestoneNameGenerator; // Auto-generate name
 } & (
   | {
       type: "time-based";

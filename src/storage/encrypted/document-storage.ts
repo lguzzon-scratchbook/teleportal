@@ -16,8 +16,8 @@ import {
 } from "teleportal/protocol/encryption";
 import {
   type DocumentMetadata as BaseDocumentMetadata,
-  type DocumentStorage,
   type Document,
+  type DocumentStorage,
 } from "../types";
 import { EncryptedBinary } from "teleportal/encryption-key";
 
@@ -43,7 +43,7 @@ export interface EncryptedDocumentMetadata extends BaseDocumentMetadata {
 
 export abstract class EncryptedDocumentStorage implements DocumentStorage {
   readonly type = "document-storage" as const;
-  storageType: "encrypted" = "encrypted";
+  storageType = "encrypted" as const;
 
   abstract writeDocumentMetadata(
     key: string,

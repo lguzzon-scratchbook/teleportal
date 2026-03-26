@@ -9,6 +9,7 @@ import {
   Source,
   Transport,
 } from "teleportal";
+import type { ServerContextResolver } from "../types";
 import { compose, getMessageReader } from "../utils";
 
 /**
@@ -62,7 +63,7 @@ export function getPubSubSource<Context extends ServerContext>({
   /**
    * The {@link ServerContext} to use for reading {@link Message}s from the {@link Source}.
    */
-  getContext: Context | ((message: RawReceivedMessage) => Context);
+  getContext: Context | ServerContextResolver<Context>;
   /**
    * The {@link PubSub} to use for consuming {@link Message}s.
    */
@@ -112,9 +113,7 @@ export function getPubSubSource<Context extends ServerContext>({
     async unsubscribe(topic) {
       if (topic === undefined) {
         await Promise.all(
-          [...subscribedTopics.values()].map((unsubscribe) =>
-            unsubscribe(),
-          ),
+          [...subscribedTopics.values()].map((unsubscribe) => unsubscribe()),
         );
         subscribedTopics.clear();
         return;
@@ -131,9 +130,7 @@ export function getPubSubSource<Context extends ServerContext>({
       },
       async cancel() {
         await Promise.all(
-          [...subscribedTopics.values()].map((unsubscribe) =>
-            unsubscribe(),
-          ),
+          [...subscribedTopics.values()].map((unsubscribe) => unsubscribe()),
         );
         subscribedTopics.clear();
       },
@@ -153,7 +150,7 @@ export function getPubSubTransport<Context extends ServerContext>({
   /**
    * The {@link ServerContext} to use for reading {@link Message}s from the {@link Source}.
    */
-  getContext: Context | ((message: RawReceivedMessage) => Context);
+  getContext: Context | ServerContextResolver<Context>;
   /**
    * The {@link PubSub} to use for consuming {@link Message}s.
    */

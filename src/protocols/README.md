@@ -43,15 +43,25 @@ The `Provider` automatically handles RPC requests via its internal `RpcClient`:
 ```typescript
 import { Provider } from "teleportal/providers";
 
-const provider = await Provider.create({ url: "wss://...", document: "my-doc" });
+const provider = await Provider.create({
+  url: "wss://...",
+  document: "my-doc",
+});
 
 // Milestone operations
 const milestones = await provider.listMilestones();
 const milestone = await provider.createMilestone("v1.0");
 
 // File operations (requires rpcHandlers with file handlers)
-const fileId = await provider.uploadFile(file, optionalFileId, optionalEncryptionKey);
-const downloadedFile = await provider.downloadFile(fileId, optionalEncryptionKey);
+const fileId = await provider.uploadFile(
+  file,
+  optionalFileId,
+  optionalEncryptionKey,
+);
+const downloadedFile = await provider.downloadFile(
+  fileId,
+  optionalEncryptionKey,
+);
 ```
 
 ## Message Format

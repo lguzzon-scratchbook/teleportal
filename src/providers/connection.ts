@@ -4,8 +4,8 @@ import {
   Observable,
   RawReceivedMessage,
 } from "teleportal";
-import { createFanOutWriter, FanOutReader } from "teleportal/transports";
-import { ExponentialBackoff, TimerManager, type Timer } from "./utils";
+import { FanOutReader, createFanOutWriter } from "teleportal/transports";
+import { ExponentialBackoff, type Timer, TimerManager } from "./utils";
 
 /**
  * The context of a {@link Connection}.

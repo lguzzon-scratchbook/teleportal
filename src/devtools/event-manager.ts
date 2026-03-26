@@ -1,5 +1,5 @@
 import { teleportalEventClient } from "teleportal/providers";
-import type { DevtoolsMessage, ConnectionStateInfo, Statistics } from "./types";
+import type { ConnectionStateInfo, DevtoolsMessage, Statistics } from "./types";
 import type { Message, RawReceivedMessage } from "teleportal";
 import { DocumentTracker } from "./utils/document-tracker";
 import type { SettingsManager } from "./settings-manager";

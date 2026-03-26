@@ -1,11 +1,11 @@
-import { describe, expect, it, beforeEach, afterEach } from "bun:test";
+import { afterEach, beforeEach, describe, expect, it } from "bun:test";
 import {
-  Message,
-  ServerContext,
-  DocMessage,
   BinaryMessage,
+  DocMessage,
   InMemoryPubSub,
+  Message,
   PubSubTopic,
+  ServerContext,
   Update,
 } from "teleportal";
 

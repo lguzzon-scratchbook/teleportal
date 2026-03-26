@@ -5,12 +5,14 @@ import { decryptUpdate, encryptUpdate } from "teleportal/encryption-key";
 import type { Driver } from "unstorage";
 import TransformDriver from "./transform-driver";
 
+/**
+ * Function type for resolving encryption keys.
+ */
+export type KeyResolver = (key: string) => CryptoKey | Promise<CryptoKey>;
+
 export function createEncryptedDriver(
   driver: Driver,
-  getKey:
-    | CryptoKey
-    | Promise<CryptoKey>
-    | ((key: string) => CryptoKey | Promise<CryptoKey>),
+  getKey: CryptoKey | Promise<CryptoKey> | KeyResolver,
 ) {
   return TransformDriver({
     driver,

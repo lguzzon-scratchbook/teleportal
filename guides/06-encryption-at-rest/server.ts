@@ -4,8 +4,8 @@ import memoryDriver from "unstorage/drivers/memory";
 import { importEncryptionKey } from "teleportal/encryption-key";
 import { Server } from "teleportal/server";
 import {
-  createEncryptedDriver,
   UnstorageDocumentStorage,
+  createEncryptedDriver,
 } from "teleportal/storage";
 
 // import an existing encryption key
