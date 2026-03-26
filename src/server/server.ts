@@ -1,5 +1,5 @@
 import { uuidv4 } from "lib0/random";
-import { emitWideEvent, type WideEvent } from "./logger";
+import { type WideEvent, emitWideEvent } from "./logger";
 import {
   AckMessage,
   DocMessage,
@@ -32,6 +32,15 @@ import { Client } from "./client";
 import type { ClientDisconnectReason, ServerEvents } from "./events";
 import { Session } from "./session";
 
+/**
+ * Function type for resolving storage per-document.
+ */
+export type StorageResolver<Context extends ServerContext> = (ctx: {
+  documentId: string;
+  context: NoInfer<Context>;
+  encrypted: boolean;
+}) => DocumentStorage | Promise<DocumentStorage>;
+
 export type ServerOptions<Context extends ServerContext> = {
   /**
    * Retrieve per-document storage.
@@ -39,11 +48,7 @@ export type ServerOptions<Context extends ServerContext> = {
   storage:
     | DocumentStorage
     | Promise<DocumentStorage>
-    | ((ctx: {
-        documentId: string;
-        context: NoInfer<Context>;
-        encrypted: boolean;
-      }) => DocumentStorage | Promise<DocumentStorage>);
+    | StorageResolver<Context>;
 
   /**
    * Optional permission checker for read/write.
